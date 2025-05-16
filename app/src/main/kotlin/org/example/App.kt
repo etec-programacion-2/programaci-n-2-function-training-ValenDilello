@@ -10,7 +10,7 @@ fun main() {
     println("El promedio es: $promedio1")
 
     // TODO: Implementar función esAprobado
-    val nota = 7.0
+    val nota = promedio1
     val aprobado = esAprobado(nota)
     println("¿Está aprobado? $aprobado")
 
@@ -54,54 +54,87 @@ fun main() {
 
 // Etapa 1
 fun calcularPromedio(nota1: Double, nota2: Double): Double {
-    // Implementar aquí
-    return 0.0
+    val promedioCalculado = (nota1 + nota2) / 2
+    return promedioCalculado
 }
 
 fun esAprobado(nota: Double): Boolean {
-    // Implementar aquí
+    if (nota >= 7.0) {
+        return true
+    } else if (nota < 7.0) {
+    }
     return false
 }
 
 // Etapa 2
 fun calcularPromedioTresNotas(nota1: Double, nota2: Double, nota3: Double): Double {
-    // Implementar aquí
-    return 0.0
+    val promedioCalculado3notas = (nota1 + nota2 + nota3) / 3
+    return promedioCalculado3notas
 }
 
 fun obtenerEstadoAlumno(nombre: String, apellido: String, nota: Double): String {
-    // Implementar aquí
+    if (nota >= 7.0) {
+        return "$nombre $apellido está aprobado con nota $nota"
+        } else if (nota < 7.0) {
+            return "$nombre $apellido está desaprobado con nota $nota"
+    }
     return ""
 }
 
 // Etapa 3
 fun calcularPromedioCurso(notas: List<Double>): Double {
-    // Implementar aquí
-    return 0.0
+    val promedioCurso = notas.sum() / notas.size
+    return promedioCurso
 }
 
 fun obtenerAlumnosAprobados(nombres: List<String>, notas: List<Double>): List<String> {
-    // Implementar aquí
-    return emptyList()
+    val aprobados = mutableListOf<String>()
+    for (i in nombres.indices) {
+        if (notas[i] >= 7.0) {
+            aprobados.add(nombres[i])
+        }
+    }
+    return aprobados
 }
 
 // Etapa 4
 fun generarBoletin(nombre: String, materias: List<String>, notas: List<Double>): String {
-    // Implementar aquí
-    return ""
+    val resultado = StringBuilder("Boletín de $nombre:\n")
+    for (i in materias.indices) {
+        val estado = if (notas[i] >= 7.0) "Aprobado" else "Desaprobado"
+        resultado.append("- ${materias[i]}: ${notas[i]} ($estado)\n")
+    }
+    return resultado.toString()
 }
 
 fun obtenerNotaMasAlta(notas: List<Double>): Double {
-    // Implementar aquí
-    return 0.0
+    var notaMasAlta = notas[0]
+    for (nota in notas) {
+        if (nota > notaMasAlta) {
+            notaMasAlta = nota
+        }
+    }
+    return notaMasAlta
 }
 
 fun obtenerNotaMasBaja(notas: List<Double>): Double {
     // Implementar aquí
-    return 0.0
+    var notaMasBaja = notas[0]
+    for (nota in notas) {
+        if (nota < notaMasBaja) {
+            notaMasBaja = nota
+        }
+    }
+    return notaMasBaja
 }
 
 fun contarAprobados(notas: List<Double>): Int {
     // Implementar aquí
-    return 0
+    var contarAprobados = 0
+    for (nota in notas) {
+        if (nota >= 7.0) {
+            contarAprobados++
+        }
+    }
+    return contarAprobados
 }
